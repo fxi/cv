@@ -1,0 +1,412 @@
+% !TEX program = xelatex
+
+% --------------{ CV Fred Moser }--------------- %
+%
+% This document contains my CV in 2 languages, based on article.cls.
+% f@fxi.io
+
+% --------------{ preamble}--------------- %
+\documentclass[10pt]{article}
+\usepackage[log-declarations=false]{xparse}% remove warnings...
+\usepackage[quiet]{fontspec}% openType font
+\usepackage[french,english]{babel}
+\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc}% not needed here with XeLaTeX.
+
+% --------------{ General style }--------------- %
+
+\usepackage{fontawesome} %require installed fontawesome font
+\usepackage{tikz} % used in rating function 
+%\usepackage{tabularx} % not used 
+\usepackage[a4paper,margin=1.5cm]{geometry}
+\usepackage{url}
+\usepackage{multicol}
+\pagestyle{empty}
+
+
+% set parameters for multicols
+\setlength{\columnseprule}{0.0pt}
+\setlength\columnsep{20pt}
+
+% redef article.cls maketitle command
+\makeatletter
+\def\maketitle{%
+  \begin{center}
+    {\Large\sffamily\bfseries \@title}%
+  \end{center}%
+  \vspace{5ex}
+}
+\makeatother
+
+% change article.cls section command 
+\makeatletter 
+\def\section{\@startsection {section}{1}{\z@}%
+  {-3.5ex \@plus -1ex \@minus -.2ex}%
+  {2.3ex \@plus.2ex}%
+  {\Large\sffamily\bfseries}}%
+\makeatother
+
+\makeatletter 
+\def\subsection{\@startsection{subsection}{2}{\z@}%
+  {-3.25ex\@plus -1ex \@minus -.2ex}%
+  {1.5ex \@plus .2ex}%
+  {\normalfont\sffamily}}
+\makeatother
+
+% set a star as bullet for list (itemize)
+\renewcommand{\labelitemi}{$\star$}
+
+
+
+% --------------{ CV 2 languages cmd}--------------- %
+% set a command to change language for a word, sentence or section.
+% Here : #1 = french and #2 = english
+\newcommand{\dl}[2]{{
+    #1
+  }}
+
+% add CV environment, wrap around description list. Maybe other tweaks later here.
+\newenvironment{cvPrint}{%
+  \begin{description}
+    }{
+  \end{description}
+}
+
+% --------------{ Style for each entry}--------------- %
+% Style for cv entries
+% 1=date, 2=title, 3=organisation, 4=location, 5=facts
+% to do : put entry list in a database ? bibtex ? json ?
+\newcommand{\cvEntry}[5]{%
+\item[\small\sf #1]\hfill{\sf\bfseries#2}\\
+  {\sc #3}\hfill({\it #4})\vspace{0.05cm}\\
+  #5%
+}
+
+% --------------{ Score / rate bar}--------------- %
+\newcommand\score[2]{
+  \pgfmathsetmacro\pgfxa{#1+1}
+  \tikz{%
+    \foreach \i in {1,...,#2} {
+      \pgfmathparse{(\i<=#1?"black":"white")}
+      \edef\scorecolor{\pgfmathresult}
+      \draw[color=black,fill=\scorecolor](\i*0.6em,0) circle (0.3ex);
+    }%
+  }%
+}
+
+
+\title{Frédéric Moser \\ {\small \url{http://fxi.io}}}
+\begin{document}
+\maketitle
+
+
+% --------------{ Contact info}--------------- %
+
+\begin{tabular}{ll}
+  \faPencil &\url{f@fxi.io} \\
+  \faTwitter & \url{@Fred_Moser}\\
+  \faPhone & +41(0)77-411-27-04\\
+  \faHome & Ch. du Nant-Cayla 2 \\& 1203 \textsc{Genève}
+\end{tabular}
+
+\begin{multicols}{2}
+
+  % --------------{ Objectif de carrière }--------------- %
+
+  \dl{
+    \section*{Objectif}
+    Travailler pour une organisation innovante, respectueuse de l'environnement et contribuer à son succès en lui fournissant mon savoir-faire technique et scientifique.
+  }{
+    \section*{Career objective}
+    To work for an innovative, environmentally conscious organizations and contributing to its success by providing my scientific and technical skills.
+  }
+
+
+  \dl{% --------------{ Formation FR }--------------- %
+    \section*{Formation}
+    \begin{cvPrint}
+      \cvEntry{2010--2013}{Master en Sciences de l'Environnement}{Université de Genève}{Genève}{
+        Mémoire: \textit{Changements climatiques et biodiversité alpine: modélisation de la distribution d'insectes aquatiques dans le bassin du Rhône en Valais.}\\
+        {\footnotesize Direction : D\up{r} E. Castella \& Prof. D\up{r} A. Lehman. }
+      }
+      \cvEntry{2007--2010}{Bachelor en Géographie et Environnement}{Université de Genève}{Genève}{
+        Mémoire: \textit{L'espace partagé comme solution pour reconsidérer la rue à échelle humaine.} \\
+        {\footnotesize Direction : D\up{r} B. Levy.}
+      }
+    \end{cvPrint}
+  }{% --------------{ Education EN }--------------- %
+    \section*{Education}
+    \begin{cvPrint}
+      \cvEntry{2010--2013}{Master of Environmental Sciences}{University of Geneva}{Genève}{
+        Thesis : \textsl{Impact of climatic changes on alpine biodiversity: species distribution modelling for aquatic insect in Rhône watershed in Valais.} \\
+        {\footnotesize Direction : D\up{r} E. Castella \& Prof. D\up{r} A. Lehman. }
+      }
+      \cvEntry{2007--2010}{Bachelor of Arts in Geography}{University of Geneva}{Genève}{
+        Thesis : \textsl{Shared space concept as a solution to reconsider street design at a human scale}\\
+        {\footnotesize Direction : D\up{r} B. Levy.}
+      }
+    \end{cvPrint}
+  }
+
+
+
+  % --------------{ Skills }--------------- %
+
+  \dl{
+    \section*{Compétences informatiques}
+    Evaluation indicative\footnote{Echelle: \score{1}{5} = basic, \score{5}{5} = advanced} :
+  }{
+    \section*{Computer skills}
+    Indicative assessment\footnote{Scale: \score{1}{5} = basic, \score{5}{5} = advanced} :
+  }
+
+  \begin{multicols}{2}
+    \subsection*{GIS}
+    \noindent\begin{tabular}{ll}
+      \score{4}{5} & \texttt{Grass GIS} \\
+      \score{3}{5} &\texttt{ArcGIS} \\
+      \score{3}{5} &\texttt{QGIS} \\
+    \end{tabular}
+    \subsection*{\dl{Base de données}{Databases}}
+    \noindent\begin{tabular}{ll}
+      \score{4}{5} &\texttt{SQLite} \\
+      \score{3}{5} &\texttt{Spatialite} \\
+      \score{2}{5} &\texttt{PostGIS} \\
+    \end{tabular}
+    \subsection*{Scripting}
+    \noindent\begin{tabular}{ll}
+      \score{4}{5} &\texttt{R}\\
+      \score{4}{5} &{\LaTeX} \\
+      \score{3}{5} &\texttt{HTML} \\
+      \score{2}{5} &\texttt{JavaScript} \\
+      \score{2}{5} &\texttt{Shell scripts} \\
+      \score{2}{5} &\texttt{CSS} \\
+      \score{2}{5} &\texttt{Python} \\
+    \end{tabular}\\
+
+    \subsection*{\dl{Librairies}{Libraries}}
+    \noindent\begin{tabular}{ll}
+      \score{4}{5} &\texttt{Shiny (R)} \\
+      \score{3}{5} &\texttt{Caret (R)} \\
+      \score{3}{5} &\texttt{Leaflet (js)} \\
+      \score{3}{5} &\texttt{GDAL} \\
+    \end{tabular}\\
+    \subsection*{\dl{Systèmes}{OS}}
+    \noindent\begin{tabular}{ll}
+      \score{4}{5} &\texttt{OS X} \\
+      \score{3}{5} &\texttt{Ubuntu server} \\
+      \score{1}{5} &\texttt{Windows} \\
+    \end{tabular}\\
+
+    \subsection*{\dl{CAD}{CAD}}
+    \noindent\begin{tabular}{ll}
+      \score{4}{5} &\texttt{Shark FX} \\
+      \score{2}{5} &\texttt{Autocad} \\
+    \end{tabular}\\
+
+    \subsection*{\dl{Autres}{Others}}
+    \noindent\begin{tabular}{ll}
+      \score{4}{5} &\texttt{Stella} \\
+      \score{3}{5} &\texttt{SPSS} \\
+      \score{2}{5} &\texttt{git} \\
+    \end{tabular}\\
+  \end{multicols}
+
+
+  \vfill
+
+  \dl{ % --------------{ Expériences FR }--------------- %
+    \section*{Expériences professionnelles}
+    \begin{cvPrint}
+      % --------------{ LEBA 2 }--------------- %
+      \cvEntry{03/2013--5/2014}{Assistant de recherche}{Université de Genève}{Genève}{
+        Développement d'applications et traitement de données pour la partie biodiversité du projet européen \textsc{acqwa}\footnote{\textsc{acqwa} (\textit{Assessing Climate Impacts on the Quantity and quality of WAter).} \url{http://www.acqwa.ch/}}. Utilisation intensive de \texttt{R}, \texttt{awk}, \texttt{SQLite}, \texttt{bash} et \texttt{GRASS-gis}.
+        {\begin{itemize}
+              \small
+            \item Formatage de fichiers textes (240 \textsc{gb}), constitution d'une base de données contenant $9e09$ champs, puis réduction statistique;
+            \item Traitement de variables spatiales et conception d'une base de données géoréférées;
+            \item Calcul de 40 indicateurs statistiques horaires pour 25'000 segments de rivière sur 60 ans;
+            \item Développement d'une application web\footnote{ \texttt{lebamod} (\textit{Laboratoire d'écologie aquatique: modélisation de distribution d'espèces).} \url{http://sdm.unige.ch/} } pour la conception, le calcul, l'analyse spatio-temporelle et le partage d'ensembles de modèles statistiques prédictifs.
+            \item Conception d'un système de file d'attente permettant de traiter simultanément un grand nombre de tâche sur un serveur. 
+          \end{itemize}}
+      }
+      % --------------{ LEBA 1 }--------------- %
+      \cvEntry{08/2013--12/2013}{Assistant}{Université de Genève (50\%)}{Genève}{
+        Développement d'applications et contributions aux cours de géomatique.
+        {\small
+          \begin{itemize}
+            \item Développement de fonctions pour automatiser la prédiction statistique de débit par station hydrologique, d'après des simulations pluviométriques et de bilans de masse glacière de 1951 à 2050\footnote{\texttt{smodiv} (\textit{Stat. pred. modeling of discharge in Valais}).};
+            \item  Application cartographique web\footnote{\texttt{hexdim} (\textit{Hexagonal grid distribution map}). \url{http://sdm.unige.ch}} permettant de visualiser les résultats de modèles statistiques de distribution d'insectes aquatiques, développée dans le cadre de mon mémoire de master: ajout de fonctionnalités, optimisation et rédaction d'un guide;
+            \item  Assistant pour un cours de géomatique et conversion de travaux pratiques \textsc{ESRI} \texttt{ArcGIS} vers \texttt{QuantumGIS}.
+          \end{itemize}}
+      }
+    \end{cvPrint}
+  }{% --------------{ Experiences EN }--------------- %
+    \section*{Work experience}
+    \begin{cvPrint}
+      % --------------{ LEBA 2 }--------------- %
+      \cvEntry{03/2014 -- 06/2014}{Research assistant}{University of Geneva}{Geneva}{
+        Application development and data processing for the biodiversity part of the \textsc{acqwa} project\footnote{\textsc{acqwa} (\textit{Assessing Climate Impacts on the Quantity and quality of WAter).}  \url{http://www.acqwa.ch/}} in Valais, Switzerland. Intensive use of \texttt{R}, \texttt{Shiny (R)}, \texttt{Caret (R)}, \texttt{awk}, \texttt{SQLite} and \texttt{Grass GIS}. 
+        {\begin{itemize}
+              \small
+            \item Text file processing (240 \textsc{gb}), creation and optimization of a relational database;
+            \item Spatial vector and raster processing. Creation of a spatial database with multiple environmental predictors;
+            \item Calculation of 40 hourly and monthly hydrologic indices for 25'000 segments of river, for 60 years;
+            \item Development of an interactive web application\footnote{\texttt{lebamod} (\textit{Laboratoire d'écologie aquatique: modélisation de distribution d'espèces).} \url{http://sdm.unige.ch/} } to create, fit, analyse and share a potentially large ensemble of predictive models and predictions;
+            \item Creating a robust custom queue system to distribute any number of tasks on a remote calculation server, allowing real time concurrent access to the application and high performance parallel computing.
+          \end{itemize}}
+      }
+      \vfill
+      % --------------{ LEBA 1 }--------------- %
+      \cvEntry{08/2013--12/2013}{Research assistant}{University of Geneva}{Geneva}{
+        Scripts and functions development in R, contribution to the introductory course of geomatics.
+        {\small
+          \begin{itemize}
+            \item Development of a set of functions and scripts\footnote{\texttt{smodiv} (\textit{Stat. pred. modeling of discharge in Valais}).} to automate statistical predictions of discharge for multiple hydrological stations, from simulated rainfall and glacial mass balance data for the 1951 to 2050 period;
+            \item Adding functions, optimization works for a web application\footnote{\texttt{hexdim} (\textit{Hexagonal grid distribution map}). \url{http://sdm.unige.ch}} made during my Master thesis to spatially explore a set of species distribution predictive models;
+            \item Convertion of a set of \texttt{ArcGIS} workshops to an open source GIS solution.
+          \end{itemize}}
+      }
+    \end{cvPrint}
+  }
+
+
+  % --------------{ Langues }--------------- %
+
+  \section*{\dl{Langues}{Languages}}
+  \begin{itemize}
+    \item \textbf{\sffamily Français} : langue maternelle ;
+    \item \textbf{\sffamily English} :  Proficient in technical english ;
+    \item \textbf{\sffamily Deutch} : Basiswissen.
+  \end{itemize}
+
+  % --------------{ Autres formation }--------------- %
+
+  \newpage
+  \section*{\dl{Autres formations}{Previous education}}
+
+  \begin{cvPrint}
+    \dl{
+      \cvEntry{2000--2001}{CFC d'horloger rhabilleur}{École d'horlogerie}{Petit-Lancy}{
+        Récompence : Prix de la Fonation Hans Wilsdorf
+      }
+    }{
+      \cvEntry{2000--2001}{Diploma of watchmaker (rhabilleur)}{School of watchmaking}{Petit-Lancy}{
+        Award : Fondation Hans-Wilsdorf prize}
+    }
+    \dl{
+      \cvEntry{1997--2000}{CFC d'horloger praticien}{Patek Philippe \& École d'horlogerie}{Plan-les-Ouates}{}
+    }{
+      \cvEntry{1997--2000}{Diploma of watchmaker}{Patek Philippe \& School of watchmaking}{Plan-les-Ouates}{}
+    }
+    %\dl{
+    %\cvEntry{1988--1997}{Scolarité obligatoire}{Saint-imier}{}
+    %}{
+    %\cvEntry{1988--1997}{Primary education}{Saint-imier}{}
+    %}
+
+  \end{cvPrint}
+  \section*{\dl{Autres expériences}{Other work experiences}}
+  \begin{cvPrint}
+    \dl{
+      \cvEntry{09/2009--02/2014}{Technicien}{MacWorks SàRL (20-50\%)}{Genève}{
+        Réparation de matériel informatique; récupération de données.
+      }
+    }{
+      \cvEntry{09/2009--02/2014}{Computer technician}{MacWorks SàRL (20-50\%)}{Geneva}{
+        Computer and smartphone repair; data recovery.
+      }
+    }
+
+    \dl{
+      \cvEntry{01/2008--04/2010}{Horloger}{Andersen Genève~SA (10-80\%)}{Genève}{
+        Conception de complication horlogère.
+      }
+    }{
+      \cvEntry{01/2008--04/2010}{Watchmaker}{Andersen Genève~SA (10-80\%)}{Geneva}{
+        Watch complications designer.
+      }
+    }
+
+    \dl{
+      \cvEntry{12/2005--11/2008}{Coursier à vélo}{dvdmania.ch (10-20\%)}{Genève}{
+        Livraison express.
+      }
+    }{
+      \cvEntry{12/2005--11/2008}{Bicycle messenger}{dvdmania.ch (10-20\%)}{Geneva}{
+        Express delivery.
+      }
+    }
+
+    %\cvEntry{11/2007--12/2007}{Service civil, exploitation C.Dubosson}{Troistorrents}{
+    %Participation à la restauration d'un bâtiment.
+    %}
+
+
+    \dl{
+      \cvEntry{11/2001--09/2006}{Artisan horloger}{Indépendant (80-100\%)}{Genève}{
+        Conception, fabrication et montage de mécanisme haut de gamme pour Andersen Genève~SA ; restauration de montres anciennes.
+      }
+    }{
+      \cvEntry{11/2001--09/2006}{Watchmaker}{Self-employed (80-100\%)}{Geneva}{
+        Design of mechanical parts, unique watches manufacturing and repairing. 
+      }
+    }
+
+    \dl{
+      \cvEntry{06/2006--07/2006}{Service civil}{Genève Roule}{Genève}{
+        Développement d'une base de données pour la gestion des heures et calcul des salaires des employés; aide à l'accueil des clients; 
+        encadrement des requérants d'asile.
+      }
+    }{
+      \cvEntry{06/2006--07/2006}{Service civil}{Genève Roule}{Geneva}{
+        Database development on FileMaker 9.0 : payroll management for external employees;
+        Customer reception and staff management.
+      }
+    }
+
+    \dl{
+      \cvEntry{05/2005--08/2005}{Service civil}{Institut d'architecture et d'urbanisme de l'Université de Genève}{Carouge}{
+        Archivage de plans anciens et de diapositives dans une banque d'image; développement d'un didacticiel d'aide à la numérisation d'archives.
+      }
+
+    }{
+      \cvEntry{05/2005--08/2005}{Service civil}{Institut d'architecture et d'urbanisme de l'Université de Genève}{Carouge}{
+        Archiving historic plans and slides in an image bank;  
+        Development of an interactive tutorial to assist digitizing process.
+      }
+
+    }
+
+    \dl{
+      \cvEntry{01/2002--12/2003}{Coursier à vélo}{Krick Cyclomessagerie (40\%) }{Genève}{
+        Livraison express.
+      }
+
+    }{
+      \cvEntry{01/2002--12/2003}{Bicycle messenger}{Krick Cyclomessagerie (40\%) }{Geneva}{
+        Express delivery.
+      }
+    }
+
+  \end{cvPrint}
+
+  % --------------{ Extra-professionnelles }--------------- %
+
+  \section*{\dl{Activités extra-professionnelles}{Extracurricular activities}}
+
+  \begin{cvPrint}
+    \dl{
+      \cvEntry{04/2005--06/2012}{}{Association Roue Libre}{Genève}{
+        Membre du comité de 2005 à 2012. Secrétaire de 2006 à 2009.\\
+        Diverses activités au sein d'une association de coursiers à vélo et de cyclistes urbains: \textit{staff manager} du championnat suisse de coursiers à vélo 2005; développement de système pour le chronométrage de courses de vélo; administration de www.rouelibre.org; responsable de différents projets de communication.
+      }
+    }{
+      \cvEntry{04/2005--06/2012}{}{Association Roue Libre}{Geneva}{
+        Committee member from 2005 to 2012. Secretary from 2006 to 2009.\\ 
+        Various activities within an association of bicycle couriers and urban cyclists: staff manager of the swiss bicycle messenger championship 2005; software/hardware development for bike races timing; administration of  \url{www.rouelibre.org}; in charge of various communications projects.
+      }
+    }
+  \end{cvPrint}
+\end{multicols}
+\end{document}
