@@ -1,5 +1,5 @@
-% !TEX program = xelatex
-
+% compilation with latexmk and XeLaTeX. Inside working dir :
+% echo "\$pdflatex = 'xelatex --shell-escape %O %S';" > .latexmkrc
 % --------------{ CV Fred Moser }--------------- %
 %
 % This document contains my CV in 2 languages, based on article.cls.
@@ -25,8 +25,8 @@
 
 
 % set parameters for multicols
-\setlength{\columnseprule}{0.0pt}
-\setlength\columnsep{20pt}
+\setlength{\columnseprule}{0.1pt}
+\setlength\columnsep{25pt}
 
 % redef article.cls maketitle command
 \makeatletter
@@ -34,7 +34,7 @@
   \begin{center}
     {\Large\sffamily\bfseries \@title}%
   \end{center}%
-  \vspace{5ex}
+  \vspace{3ex}
 }
 \makeatother
 
@@ -53,16 +53,16 @@
   {\normalfont\sffamily}}
 \makeatother
 
+
 % set a star as bullet for list (itemize)
 \renewcommand{\labelitemi}{$\star$}
-
-
 
 % --------------{ CV 2 languages cmd}--------------- %
 % set a command to change language for a word, sentence or section.
 % Here : #1 = french and #2 = english
 \newcommand{\dl}[2]{{
-    #1
+   #1
+  % #2
   }}
 
 % add CV environment, wrap around description list. Maybe other tweaks later here.
@@ -77,8 +77,8 @@
 % 1=date, 2=title, 3=organisation, 4=location, 5=facts
 % to do : put entry list in a database ? bibtex ? json ?
 \newcommand{\cvEntry}[5]{%
-\item[\small\sf #1]\hfill{\sf\bfseries#2}\\
-  {\sc #3}\hfill({\it #4})\vspace{0.05cm}\\
+\item[\sf\bfseries #2]\hfill{\sf\bfseries #1}\\
+  \textit{\footnotesize #3}\hfill \textit{\footnotesize #4}\vspace{0.05cm}\\
   #5%
 }
 
@@ -101,14 +101,19 @@
 
 
 % --------------{ Contact info}--------------- %
+  \faPencil \hspace{1em} \url{f@fxi.io}\hfill
+  \faTwitter  \hspace{1em} \url{@Fred_Moser}\hfill
+  \faPhone  \hspace{1em} +41(0)77-411-27-04\hfill
+  \faHome  \hspace{1em} Ch. du Nant-Cayla 2 --  1203 \textsc{Genève}
 
-\begin{tabular}{ll}
-  \faPencil &\url{f@fxi.io} \\
-  \faTwitter & \url{@Fred_Moser}\\
-  \faPhone & +41(0)77-411-27-04\\
-  \faHome & Ch. du Nant-Cayla 2 \\& 1203 \textsc{Genève}
-\end{tabular}
 
+%\begin{tabular}{ll}
+%  \faPencil &\url{f@fxi.io} \\
+%  \faTwitter & \url{@Fred_Moser}\\
+%  \faPhone & +41(0)77-411-27-04\\
+%  \faHome & Ch. du Nant-Cayla 2 \\& 1203 \textsc{Genève}
+%\end{tabular}
+%
 \begin{multicols}{2}
 
   % --------------{ Objectif de carrière }--------------- %
@@ -122,15 +127,74 @@
   }
 
 
+
+ 
+
+
+  \dl{ % --------------{ Expériences FR }--------------- %
+    \section*{Expériences professionnelles}
+    \begin{cvPrint}
+      % --------------{ LEBA 2 }--------------- %
+      \cvEntry{03/2014 -- 06/2014}{Assistant de recherche}{Université de Genève}{Genève}{
+        Développement d'applications et traitement de données pour la partie biodiversité du projet européen \textsc{acqwa}\footnote{\textsc{acqwa} (\textit{Assessing Climate Impacts on the Quantity and quality of WAter).} \url{http://www.acqwa.ch/}}. Utilisation intensive de \texttt{R}, \texttt{awk}, \texttt{SQLite}, \texttt{bash} et \texttt{GRASS-gis}.
+        {\begin{itemize}
+              \small
+            \item Formatage de fichiers textes (240 \textsc{gb}), constitution d'une base de données contenant $9e09$ champs, puis réduction statistique;
+            \item Traitement de variables spatiales et conception d'une base de données géoréférées;
+            \item Calcul de 40 indicateurs statistiques horaires pour 25'000 segments de rivière sur 60 ans;
+            \item Développement d'une application web\footnote{ \texttt{lebamod} (\textit{Laboratoire d'écologie aquatique: modélisation de distribution d'espèces).} \url{http://sdm.unige.ch/} } pour la conception, le calcul, l'analyse spatio-temporelle et le partage d'ensembles de modèles statistiques prédictifs.
+            \item Conception d'un système de file d'attente permettant de traiter simultanément un grand nombre de tâche sur un serveur. 
+          \end{itemize}}
+      }
+      % --------------{ LEBA 1 }--------------- %
+      \cvEntry{08/2013 -- 12/2013}{Assistant de recherche}{Université de Genève (50\%)}{Genève}{
+        Développement d'applications et contributions aux cours de géomatique.
+        {\small
+          \begin{itemize}
+            \item Développement de fonctions pour automatiser la prédiction statistique de débit par station hydrologique, d'après des simulations pluviométriques et de bilans de masse glacière de 1951 à 2050\footnote{\texttt{smodiv} (\textit{Stat. pred. modeling of discharge in Valais}).};
+            \item  Application cartographique web\footnote{\texttt{hexdim} (\textit{Hexagonal grid distribution map}). \url{http://sdm.unige.ch}} permettant de visualiser les résultats de modèles statistiques de distribution d'insectes aquatiques, développée dans le cadre de mon mémoire de master: ajout de fonctionnalités, optimisation et rédaction d'un guide;
+            \item  Assistant pour un cours de géomatique et conversion de travaux pratiques \textsc{ESRI} \texttt{ArcGIS} vers \texttt{QuantumGIS}.
+          \end{itemize}}
+      }
+    \end{cvPrint}
+  }{% --------------{ Experiences EN }--------------- %
+    \section*{Work experience}
+    \begin{cvPrint}
+      % --------------{ LEBA 2 }--------------- %
+      \cvEntry{03/2014 -- 06/2014}{Research assistant}{University of Geneva}{Geneva}{
+        Application development and data processing for the biodiversity part of the \textsc{acqwa} project\footnote{\textsc{acqwa} (\textit{Assessing Climate Impacts on the Quantity and quality of WAter).}  \url{http://www.acqwa.ch/}} in Valais, Switzerland. Intensive use of \texttt{R}, \texttt{Shiny (R)}, \texttt{Caret (R)}, \texttt{awk}, \texttt{SQLite} and \texttt{Grass GIS}. 
+        {\begin{itemize}
+              \small
+            \item Text file processing (240 \textsc{gb}), creation and optimization of a relational database;
+            \item Spatial vector and raster processing. Creation of a spatial database with multiple environmental predictors;
+            \item Calculation of 40 hourly and monthly hydrologic indices for 25'000 segments of river, for 60 years;
+            \item Development of an interactive web application\footnote{\texttt{lebamod} (\textit{Laboratoire d'écologie aquatique: modélisation de distribution d'espèces).} \url{http://sdm.unige.ch/} } to create, fit, analyse and share a potentially large ensemble of predictive models and predictions;
+            \item Creating a robust custom queue system to distribute any number of tasks on a remote calculation server, allowing real time concurrent access to the application and high performance parallel computing.
+          \end{itemize}}
+      }
+      % --------------{ LEBA 1 }--------------- %
+      \cvEntry{08/2013--12/2013}{Research assistant}{University of Geneva}{Geneva}{
+        Scripts and functions development in R, contribution to the introductory course of geomatics.
+        {\small
+          \begin{itemize}
+            \item Development of a set of functions and scripts\footnote{\texttt{smodiv} (\textit{Stat. pred. modeling of discharge in Valais}).} to automate statistical predictions of discharge for multiple hydrological stations, from simulated rainfall and glacial mass balance data for the 1951 to 2050 period;
+            \item Adding functions, optimization works for a web application\footnote{\texttt{hexdim} (\textit{Hexagonal grid distribution map}). \url{http://sdm.unige.ch}} made during my Master thesis to spatially explore a set of species distribution predictive models;
+            \item Convertion of a set of \texttt{ArcGIS} workshops to an open source GIS solution.
+          \end{itemize}}
+      }
+    \end{cvPrint}
+  }
+\vfill
+
   \dl{% --------------{ Formation FR }--------------- %
     \section*{Formation}
     \begin{cvPrint}
       \cvEntry{2010--2013}{Master en Sciences de l'Environnement}{Université de Genève}{Genève}{
-        Mémoire: \textit{Changements climatiques et biodiversité alpine: modélisation de la distribution d'insectes aquatiques dans le bassin du Rhône en Valais.}\\
-        {\footnotesize Direction : D\up{r} E. Castella \& Prof. D\up{r} A. Lehman. }
+        Mémoire: \textsl{Changements climatiques et biodiversité alpine: modélisation de la distribution d'insectes aquatiques dans le bassin du Rhône en Valais.}\\
+        {\footnotesize Direction : D\up{r} E. Castella \& Prof. D\up{r} A. Lehmann. }
       }
-      \cvEntry{2007--2010}{Bachelor en Géographie et Environnement}{Université de Genève}{Genève}{
-        Mémoire: \textit{L'espace partagé comme solution pour reconsidérer la rue à échelle humaine.} \\
+      \cvEntry{2007--2010}{Bachelor en Géographie}{Université de Genève}{Genève}{
+        Mémoire: \textsl{L'espace partagé comme solution pour reconsidérer la rue à échelle humaine.} \\
         {\footnotesize Direction : D\up{r} B. Levy.}
       }
     \end{cvPrint}
@@ -139,7 +203,7 @@
     \begin{cvPrint}
       \cvEntry{2010--2013}{Master of Environmental Sciences}{University of Geneva}{Genève}{
         Thesis : \textsl{Impact of climatic changes on alpine biodiversity: species distribution modelling for aquatic insect in Rhône watershed in Valais.} \\
-        {\footnotesize Direction : D\up{r} E. Castella \& Prof. D\up{r} A. Lehman. }
+        {\footnotesize Direction : D\up{r} E. Castella \& Prof. D\up{r} A. Lehmann. }
       }
       \cvEntry{2007--2010}{Bachelor of Arts in Geography}{University of Geneva}{Genève}{
         Thesis : \textsl{Shared space concept as a solution to reconsider street design at a human scale}\\
@@ -152,15 +216,16 @@
 
   % --------------{ Skills }--------------- %
 
-  \dl{
+ \dl{
     \section*{Compétences informatiques}
-    Evaluation indicative\footnote{Echelle: \score{1}{5} = basic, \score{5}{5} = advanced} :
+    Evaluation indicative\footnote{Echelle: \score{1}{5} = bases, \score{5}{5} = avancé} :
   }{
     \section*{Computer skills}
     Indicative assessment\footnote{Scale: \score{1}{5} = basic, \score{5}{5} = advanced} :
   }
 
   \begin{multicols}{2}
+\setlength{\columnseprule}{0.0pt}
     \subsection*{GIS}
     \noindent\begin{tabular}{ll}
       \score{4}{5} & \texttt{Grass GIS} \\
@@ -212,65 +277,6 @@
     \end{tabular}\\
   \end{multicols}
 
-
-  \vfill
-
-  \dl{ % --------------{ Expériences FR }--------------- %
-    \section*{Expériences professionnelles}
-    \begin{cvPrint}
-      % --------------{ LEBA 2 }--------------- %
-      \cvEntry{03/2013--5/2014}{Assistant de recherche}{Université de Genève}{Genève}{
-        Développement d'applications et traitement de données pour la partie biodiversité du projet européen \textsc{acqwa}\footnote{\textsc{acqwa} (\textit{Assessing Climate Impacts on the Quantity and quality of WAter).} \url{http://www.acqwa.ch/}}. Utilisation intensive de \texttt{R}, \texttt{awk}, \texttt{SQLite}, \texttt{bash} et \texttt{GRASS-gis}.
-        {\begin{itemize}
-              \small
-            \item Formatage de fichiers textes (240 \textsc{gb}), constitution d'une base de données contenant $9e09$ champs, puis réduction statistique;
-            \item Traitement de variables spatiales et conception d'une base de données géoréférées;
-            \item Calcul de 40 indicateurs statistiques horaires pour 25'000 segments de rivière sur 60 ans;
-            \item Développement d'une application web\footnote{ \texttt{lebamod} (\textit{Laboratoire d'écologie aquatique: modélisation de distribution d'espèces).} \url{http://sdm.unige.ch/} } pour la conception, le calcul, l'analyse spatio-temporelle et le partage d'ensembles de modèles statistiques prédictifs.
-            \item Conception d'un système de file d'attente permettant de traiter simultanément un grand nombre de tâche sur un serveur. 
-          \end{itemize}}
-      }
-      % --------------{ LEBA 1 }--------------- %
-      \cvEntry{08/2013--12/2013}{Assistant}{Université de Genève (50\%)}{Genève}{
-        Développement d'applications et contributions aux cours de géomatique.
-        {\small
-          \begin{itemize}
-            \item Développement de fonctions pour automatiser la prédiction statistique de débit par station hydrologique, d'après des simulations pluviométriques et de bilans de masse glacière de 1951 à 2050\footnote{\texttt{smodiv} (\textit{Stat. pred. modeling of discharge in Valais}).};
-            \item  Application cartographique web\footnote{\texttt{hexdim} (\textit{Hexagonal grid distribution map}). \url{http://sdm.unige.ch}} permettant de visualiser les résultats de modèles statistiques de distribution d'insectes aquatiques, développée dans le cadre de mon mémoire de master: ajout de fonctionnalités, optimisation et rédaction d'un guide;
-            \item  Assistant pour un cours de géomatique et conversion de travaux pratiques \textsc{ESRI} \texttt{ArcGIS} vers \texttt{QuantumGIS}.
-          \end{itemize}}
-      }
-    \end{cvPrint}
-  }{% --------------{ Experiences EN }--------------- %
-    \section*{Work experience}
-    \begin{cvPrint}
-      % --------------{ LEBA 2 }--------------- %
-      \cvEntry{03/2014 -- 06/2014}{Research assistant}{University of Geneva}{Geneva}{
-        Application development and data processing for the biodiversity part of the \textsc{acqwa} project\footnote{\textsc{acqwa} (\textit{Assessing Climate Impacts on the Quantity and quality of WAter).}  \url{http://www.acqwa.ch/}} in Valais, Switzerland. Intensive use of \texttt{R}, \texttt{Shiny (R)}, \texttt{Caret (R)}, \texttt{awk}, \texttt{SQLite} and \texttt{Grass GIS}. 
-        {\begin{itemize}
-              \small
-            \item Text file processing (240 \textsc{gb}), creation and optimization of a relational database;
-            \item Spatial vector and raster processing. Creation of a spatial database with multiple environmental predictors;
-            \item Calculation of 40 hourly and monthly hydrologic indices for 25'000 segments of river, for 60 years;
-            \item Development of an interactive web application\footnote{\texttt{lebamod} (\textit{Laboratoire d'écologie aquatique: modélisation de distribution d'espèces).} \url{http://sdm.unige.ch/} } to create, fit, analyse and share a potentially large ensemble of predictive models and predictions;
-            \item Creating a robust custom queue system to distribute any number of tasks on a remote calculation server, allowing real time concurrent access to the application and high performance parallel computing.
-          \end{itemize}}
-      }
-      \vfill
-      % --------------{ LEBA 1 }--------------- %
-      \cvEntry{08/2013--12/2013}{Research assistant}{University of Geneva}{Geneva}{
-        Scripts and functions development in R, contribution to the introductory course of geomatics.
-        {\small
-          \begin{itemize}
-            \item Development of a set of functions and scripts\footnote{\texttt{smodiv} (\textit{Stat. pred. modeling of discharge in Valais}).} to automate statistical predictions of discharge for multiple hydrological stations, from simulated rainfall and glacial mass balance data for the 1951 to 2050 period;
-            \item Adding functions, optimization works for a web application\footnote{\texttt{hexdim} (\textit{Hexagonal grid distribution map}). \url{http://sdm.unige.ch}} made during my Master thesis to spatially explore a set of species distribution predictive models;
-            \item Convertion of a set of \texttt{ArcGIS} workshops to an open source GIS solution.
-          \end{itemize}}
-      }
-    \end{cvPrint}
-  }
-
-
   % --------------{ Langues }--------------- %
 
   \section*{\dl{Langues}{Languages}}
@@ -288,7 +294,7 @@
   \begin{cvPrint}
     \dl{
       \cvEntry{2000--2001}{CFC d'horloger rhabilleur}{École d'horlogerie}{Petit-Lancy}{
-        Récompence : Prix de la Fonation Hans Wilsdorf
+        Récompence : Prix de la Fond. Hans Wilsdorf
       }
     }{
       \cvEntry{2000--2001}{Diploma of watchmaker (rhabilleur)}{School of watchmaking}{Petit-Lancy}{
@@ -397,14 +403,14 @@
 
   \begin{cvPrint}
     \dl{
-      \cvEntry{04/2005--06/2012}{}{Association Roue Libre}{Genève}{
+      \cvEntry{04/2005--06/2012}{Secrétaire}{Association Roue Libre}{Genève}{
         Membre du comité de 2005 à 2012. Secrétaire de 2006 à 2009.\\
-        Diverses activités au sein d'une association de coursiers à vélo et de cyclistes urbains: \textit{staff manager} du championnat suisse de coursiers à vélo 2005; développement de système pour le chronométrage de courses de vélo; administration de www.rouelibre.org; responsable de différents projets de communication.
+        Diverses activités au sein d'une association de coursiers à vélo et de cyclistes urbains: \textit{staff manager} du championnat suisse de coursiers à vélo 2005 (staff = 100+); développement de système pour le chronométrage de courses de vélo; administration de \url{www.rouelibre.org}; responsable de différents projets de communication.
       }
     }{
-      \cvEntry{04/2005--06/2012}{}{Association Roue Libre}{Geneva}{
+      \cvEntry{04/2005--06/2012}{Secretary}{Association Roue Libre}{Geneva}{
         Committee member from 2005 to 2012. Secretary from 2006 to 2009.\\ 
-        Various activities within an association of bicycle couriers and urban cyclists: staff manager of the swiss bicycle messenger championship 2005; software/hardware development for bike races timing; administration of  \url{www.rouelibre.org}; in charge of various communications projects.
+        Various activities within an association of bicycle couriers and urban cyclists: staff manager of the swiss bicycle messenger championship 2005 (staff = 100+); software/hardware development for bike races timing; administration of  \url{www.rouelibre.org}; in charge of various communications projects.
       }
     }
   \end{cvPrint}
