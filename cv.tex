@@ -1,5 +1,5 @@
 % compilation with latexmk and XeLaTeX. Inside working dir :
-% echo "\$pdflatex = 'xelatex --shell-escape %O %S';" > .latexmkrc
+% $ make
 % --------------{ CV Fred Moser }--------------- %
 %
 % This document contains my CV in 2 languages, based on article.cls.
@@ -123,7 +123,7 @@
   \faPencil \hspace{0.2em} \href{mailto:f@fxi.io?Subject=Job}{\tt f@fxi.io}\hfill
   \faGithub \hspace{0.2em} \href{https://github.com/fxi}{\tt github.com/fxi}\hfill
   \faPhone  \hspace{0.2em} {\tt +41(0)77-411-27-04 \hfill}
-  \faHome  \hspace{0.2em} {\tt Ch.\ du Nant-Cayla 2 -- CH-1203 \textsc{Genève}}
+  \faHome  \hspace{0.2em} {\tt 6, Chemin du 23 Août -- CH-1205 \textsc{Genève}}
 }
 
 %\begin{tabular}{ll}
@@ -178,10 +178,12 @@
     \begin{cvPrint}
       % --------------{ unep/oms }--------------- %
       \cvEntry{06/2015 -- today }{Developer}{University of Geneva}{Geneva}{%
-      Main developer of the project \texttt{map-x} : interactive mapping and analysis platform for extractive industries in fragile states.
+        Full stack developer of \texttt{MapX}, an open source web application for interactive mapping \\ 
+        \url{https://app.mapx.org}.
       }
-      \cvEntry{11/2014 -- today }{Developer}{Freelance}{Geneva}{%
-      Main developer of the project \texttt{AccessMod 5} : modelisation of accessibility to Health Facilities for the World Health Organisation.
+      \cvEntry{11/2014 -- today }{Developer}{University of Geneva}{Geneva}{%
+        Full stack developer of \texttt{AccessMod~5}, a multiplatform desktop application for physical accessibility modelling \\ 
+        \url{https://www.accessmod.org/}.
       }
        % --------------{ LEBA 2 }--------------- %
       \cvEntry{03/2014 -- 06/2014}{Research assistant}{University of Geneva}{Geneva}{%
@@ -251,6 +253,7 @@
     \subsection*{GIS}
     \noindent\begin{tabular}{ll}
       \score{4}{5} &\texttt{Grass GIS} \\
+      \score{4}{5} &\texttt{PostGIS} \\
       \score{3}{5} &\texttt{QGIS} \\
       \score{2}{5} &\texttt{ArcGIS} \\
     \end{tabular}
@@ -261,10 +264,10 @@
     \end{tabular}
     \subsection*{Languages}
     \noindent\begin{tabular}{ll}
+      \score{4}{5} &\texttt{JavaScript} \\
+      \score{4}{5} &\texttt{HTML} \\
       \score{4}{5} &\texttt{R}\\
-      \score{4}{5} &{\LaTeX} \\
-      \score{3}{5} &\texttt{HTML} \\
-      \score{3}{5} &\texttt{JavaScript} \\
+      \score{3}{5} &{\LaTeX} \\
       \score{3}{5} &\texttt{CSS} \\
       \score{3}{5} &\texttt{Shell scripts} \\
     \end{tabular}\\
@@ -272,9 +275,10 @@
     \subsection*{\dl{Librairies}{Libraries}}
     \noindent\begin{tabular}{ll}
       \score{4}{5} &\texttt{Shiny (R)} \\
-      \score{4}{5} &\texttt{PostGIS (Postgres)} \\
       \score{3}{5} &\texttt{Mapbox GL (js)} \\
-      \score{3}{5} &\texttt{Caret (R)} \\
+      \score{3}{5} &\texttt{Webpack (js)} \\
+      %\score{3}{5} &\texttt{Docker} \\
+      %\score{3}{5} &\texttt{Caret (R)} \\
       \score{3}{5} &\texttt{GDAL} \\
     \end{tabular}\\
     \subsection*{\dl{Systèmes}{OS}}
@@ -294,6 +298,7 @@
       \score{4}{5} &\texttt{Stella} \\
       %\score{3}{5} &\texttt{SPSS} \\
       \score{3}{5} &\texttt{git} \\
+      \score{3}{5} &\texttt{Docker} \\
     \end{tabular}\\
   \end{multicols}
 
@@ -317,13 +322,13 @@
         Récompence : Prix de la Fond. Hans Wilsdorf
       }
     }{%
-      \cvEntry{2000--2001}{Diploma of watchmaker (rhabilleur)}{School of watchmaking}{Petit-Lancy}{%
+      \cvEntry{2000--2001}{Diploma of watchmaker \textsl{rhabilleur}}{School of watchmaking}{Petit-Lancy}{%
         Award : Fondation Hans-Wilsdorf prize}
     }
     \dl{%
       \cvEntry{1997--2000}{CFC d'horloger praticien}{Patek Philippe \& École d'horlogerie}{Plan-les-Ouates}{}
     }{%
-      \cvEntry{1997--2000}{Diploma of watchmaker}{Patek Philippe \& School of watchmaking}{Plan-les-Ouates}{}
+      \cvEntry{1997--2000}{Diploma of watchmaker \textsl{praticien}}{Patek Philippe Geneva \\ \& School of watchmaking}{Plan-les-Ouates}{}
     }
     %\dl{%
     %\cvEntry{1988--1997}{Scolarité obligatoire}{Saint-imier}{}
@@ -423,14 +428,14 @@
 
   \begin{cvPrint}
     \dl{%
-      \cvEntry{04/2005--06/2012}{Secrétaire}{Association Roue Libre}{Genève}{%
-        Membre du comité de 2005 à 2012. Secrétaire de 2006 à 2009.\\
+      \cvEntry{04/2005 -- Présent}{Secrétaire}{Association Roue Libre}{Genève}{%
+        Secrétaire de 2006 à 2018.\\
         Diverses activités au sein d'une association de coursiers à vélo et de cyclistes urbains: \textit{staff manager} du championnat suisse de coursiers à vélo 2005 (staff = 100+); développement de système pour le chronométrage de courses de vélo; administration de \url{www.rouelibre.org}; responsable de différents projets de communication.
       }
     }{%
-      \cvEntry{04/2005--06/2012}{Secretary}{Association Roue Libre}{Geneva}{%
-        Committee member from 2005 to 2012. Secretary from 2006 to 2009.\\ 
-        Various activities within an association of bicycle couriers and urban cyclists: staff manager of the swiss bicycle messenger championship 2005 (staff = 100+); software/hardware development for bike races timing; administration of  \url{www.rouelibre.org}; in charge of various communications projects.
+      \cvEntry{04/2005 -- Today}{Secretary}{Association Roue Libre}{Geneva}{%
+        Secretary from 2006 to 2018.\\ 
+        Various activities within an association of bicycle messengers and urban cyclists: staff manager of the swiss bicycle messenger championship 2005 (staff = 100+); software/hardware development for bike races timing; administration of  \url{www.rouelibre.org}; in charge of various communications projects.
       }
     }
   \end{cvPrint}
