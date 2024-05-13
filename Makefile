@@ -1,18 +1,21 @@
-#
 # Makefile
-# fxi, 2017-05-16 11:11
-#
+# Improved LaTeX Makefile for building a CV in English
+# Last modified by fxi, 2024-05-13
 
-all: cv_en.pdf
+# Phony targets ensure commands are run regardless of files named similarly
+.PHONY: all clean
 
-.PHONY: cv.pdf all clean
+# Default target that builds the PDF
+all: cv_english.pdf
 
-cv_en.pdf: cv.tex
-	latexmk -pdf -pdflatex="xelatex --shell-escape %O %S" -use-make cv.tex
+# Rule to create cv_english.pdf from cv_english.tex
+cv_english.pdf: cv_english.tex
+	latexmk -pdf -pdflatex="xelatex --shell-escape %O %S" -use-make cv_english.tex
 
+# Clean target that cleans up auxiliary files created by the build process
 clean:
 	latexmk -c
 
-
-# vim:ft=make
-#
+# 'make' looks for a Makefile in the current directory and follows the instructions therein.
+# The 'all' target is typically the default, building the main output, in this case, cv_english.pdf.
+# The 'clean' target uses 'latexmk -C' which is more thorough than 'latexmk -c' as it also removes PDF files along with other cleanup tasks.

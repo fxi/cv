@@ -1,0 +1,107 @@
+% compilation with latexmk and XeLaTeX. Inside working dir :
+% $ make
+% --------------{ CV Fred Moser }--------------- %
+%
+% This document contains my CV in 2 languages, based on article.cls.
+% f@fxi.io
+
+% --------------{ preamble}--------------- %
+\documentclass[10pt]{article}
+\usepackage[log-declarations=false]{xparse}% remove warnings...
+\usepackage[quiet]{fontspec}% openType font
+\usepackage[french,english]{babel}
+\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc}% not needed here with XeLaTeX.
+
+% --------------{ General style }--------------- %
+\usepackage{hyperref}
+\hypersetup{%
+  unicode=true,                                 % non-Latin characters in Acrobat’s bookmarks
+  pdffitwindow=false,                           % window fit to page when opened
+  pdfstartview={FitH},                          % fits the width of the page to the window
+  pdftitle={Fred Moser},                        % title
+  pdfauthor={Fred Moser},                       % author
+  pdfkeywords={cv} {geodata}{stat} {R} {model}, % list of keywords
+  pdfnewwindow=true,                            % links in new window
+  colorlinks=true,                              % false: boxed links; true: colored links
+  linkcolor=MidnightBlue,                       % color of internal links (change box color with linkbordercolor)
+  citecolor=MidnightBlue,                       % color of links to bibliography
+  filecolor=MidnightBlue,                       % color of file links
+  urlcolor=MidnightBlue                         % color of external links
+}
+
+\usepackage[usenames,dvipsnames]{xcolor}
+%\definecolor{lightgray}{gray}{0.5}   % make headings/dates less aggressive
+%\definecolor{lightgray2}{gray}{0.3}   % make headings/dates less aggressive
+
+\usepackage{fontawesome} %require installed fontawesome font
+\usepackage{tikz} % used in rating function 
+\usepackage[a4paper,margin=1.5cm]{geometry}
+\usepackage{multicol}
+\pagestyle{empty}
+
+% set parameters for multicols
+\setlength{\columnseprule}{0.1pt}
+\setlength\columnsep{25pt}
+
+% redef article.cls maketitle command
+\makeatletter
+\def\maketitle{%
+  \begin{center}
+    {\Large\sffamily\bfseries \@title}%
+  \end{center}%
+  \vspace{3ex}
+}
+\makeatother
+
+% change article.cls section command 
+\makeatletter 
+\def\section{\@startsection {section}{1}{\z@}%
+  {-3.5ex \@plus -1ex \@minus -.2ex}%
+  {2.3ex \@plus.2ex}%
+  {\Large\sffamily\bfseries}}%
+\makeatother
+
+\makeatletter 
+\def\subsection{\@startsection{subsection}{2}{\z@}%
+  {-3.25ex\@plus -1ex \@minus -.2ex}%
+  {1.5ex \@plus .2ex}%
+  {\normalfont\sffamily}}
+\makeatother
+
+% set a star as bullet for list (itemize)
+\renewcommand{\labelitemi}{$\star$}
+
+% add CV environment, wrap around description list. Maybe other tweaks later here.
+\newenvironment{cvPrint}{%
+  \begin{description}
+    }{%
+  \end{description}
+}
+
+
+% --------------{ Style for each entry}--------------- %
+% Style for cv entries
+% 1=date, 2=title, 3=organisation, 4=location, 5=facts
+% to do : put entry list in a database ? bibtex ? json ?
+\interlinepenalty 10000
+\newcommand{\cvEntry}[5]{%
+\item[\sf\bfseries #2]\hfill{\sf\bfseries #1}\\
+  \textit{\footnotesize #3}\hfill \textit{\footnotesize #4}\vspace{0.05cm}\\
+  #5%
+}
+
+% --------------{ Score / rate bar}--------------- %
+% see http://tex.stackexchange.com/questions/11390/drawing-stars-similar-with-tikz
+\newcommand\score[2]{%
+  \pgfmathsetmacro\pgfxa{#1+1}
+  \tikz{%
+    \foreach \i in {1,...,#2} {%
+      \pgfmathparse{(\i<=#1?"black":"white")}
+      \edef\scorecolor{\pgfmathresult}
+      \draw[color=black,fill=\scorecolor](\i*0.6em,0) circle (0.3ex);
+    }%
+  }%
+}
+
+

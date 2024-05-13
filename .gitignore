@@ -4,6 +4,6 @@ archives/
 
 
 *.swp
-cv.aux
-cv.log
-cv.out
+*.aux
+*.log
+*.out
