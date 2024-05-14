@@ -18,54 +18,43 @@
 % --------------{ Objectif de carrière }--------------- %
 
 \section*{Career objective}
-Aim to join an innovative, environmentally conscious organization where I can contribute to its success by applying my advanced problem-solving skills and technical expertise to drive sustainable initiatives and solutions.
+Aspire to join an innovative, eco-conscious organization to contribute through advanced problem-solving skills and technical expertise, driving sustainable solutions.
 
 \section*{Work experience}
 \begin{cvPrint}
 % --------------{ unep / who }--------------- %
 
-\cvEntry{06/2015 -- present}{Lead Developer}{University of Geneva}{Geneva}{%
-  Developer of \texttt{MapX}, an open-source platform for mapping and visualizing scientific data. Key figures:
-  \begin{itemize}
-    \item Currently supports 37 scientific projects across 73 countries.
-    \item Provides access to 2,400 public datasets.
-    \item Over 4,000 registered users, 3,000 active members and 80,000 distinct guest users from 193 countries in the past year.
-    \item Offers advanced features including real-time data editing, multi-source join capabilities, high-quality map composition, storytelling tools, efficient data flow management, and robust support for vector tiles. Includes \textsc{ogc} standards compatibility and an \textsc{sdk} for custom integrations.
-  \end{itemize}
-  \url{https://mapx.org}
+\cvEntry{06/2015 -- present}{Lead Developer}{University of Geneva  (80\%)}{Geneva}{%
+    Development of \texttt{MapX}, a platform for mapping and visualizing specialized scientific data.
+    \begin{itemize}
+      \item Developed the initial prototype using Shiny in two weeks.
+      \item Migrated critical parts to a Dockerized stack using \texttt{Node.js}, \texttt{PostgreSQL}, \texttt{Redis}, \texttt{Traefik},  \texttt{MeilliSearch}, and a \texttt{JavaScript} single-page application frontend.
+      \item Implemented key features including multi-source join editor, real-time attribute table editor using \texttt{WebSocket}, print-quality map export, story-map engine, \texttt{GeoServer} bridge for \texttt{OGC} standards, statistical tools, \texttt{SDK} integration package, and project management for users and vector geospatial data.
+      \item Improvement of the platform to support thousands of users from all \textsc{un} countries.
+    \end{itemize}
+    \url{https://mapx.org}
 }
 
-\cvEntry{11/2014 -- present}{Lead Developer}{University of Geneva}{Geneva}{%
-  Lead Developer of \texttt{AccessMod~5}, a \textsc{who}-supported desktop application for anisotropic accessibility analysis and modeling. Key highlights:
+\cvEntry{11/2014 -- present}{Lead Developer}{University of Geneva (20\%)}{Geneva}{%
+  Development of \texttt{AccessMod~5}, a \textsc{who}-supported desktop application for anisotropic accessibility analysis and modeling.
   \begin{itemize}
-    \item Collaboratively developed with global health leaders like \textsc{who} and \textsc{unicef}.
-    \item Recognized as a Digital Public Good, underscoring its significance in public health.
-    \item Extends beyond a modeling tool to include research and educational resources.
+    \item Developed a full-featured, user-friendly, and free replacement for \texttt{AccessMod~4} in 6 months using only open-source tools.
+    \item Provided long-term support for the platform by integrating new features and ensuring maintenance, performance improvements while migrating towards a Docker-centric multi-architecture platform and an \texttt{Electron} based app manager.
+    \item Achieved \texttt{AccessMod~5} recognition as a Digital Public Good.
   \end{itemize}
   \url{https://www.accessmod.org}
 }
-
-% --------------{ LEBA 2 }--------------- %
-\cvEntry{03/2014 -- 06/2014}{Research Assistant}{University of Geneva}{Geneva}{%
-Worked on the \textsc{acqwa} project in Valais, Switzerland, focusing on biodiversity.
-{\begin{itemize}
-\item Conducted map/reduce operations on multi-terabyte text files.
-\item Analyzed a stochastic water flow model.
-\item Developed an interactive web application (\texttt{lebamod}) using \textsc{hpc} as backend for configuring, fitting, and analyzing neural network models.
-\end{itemize}}
-}
-% --------------{ LEBA 1 }--------------- %
-\cvEntry{08/2013 -- 12/2013}{Research Assistant}{University of Geneva}{Geneva}{%
-Contributed to geomatics introductory courses and developed tools in R.
-{\small
-\begin{itemize}
-\item Automated statistical predictions of discharge for multiple hydrological stations using scripts (\texttt{smodiv}).
-\item Enhanced a web application (\texttt{hexdim}) for spatial exploration of species distribution predictive models.
-\item Transitioned ArcGIS workshops to open-source GIS solutions.
-\end{itemize}}
+\cvEntry{08/2013 -- 06/2014}{Research Assistant}{University of Geneva}{Geneva}{%
+  Contributed to multiple projects focusing on biodiversity and geomatics. Key achievements:
+  \begin{itemize}
+    \item Conducted map/reduce operations on multi-terabyte text files and analyzed a stochastic water flow model for the \textsc{acqwa} project.
+    \item Developed \texttt{lebamod}, an interactive web application using \textsc{hpc} for configuring, fitting, and analyzing neural network models.
+    \item Automated statistical predictions of discharge for multiple hydrological stations using \texttt{R} scripts.
+    \item Enhanced \texttt{hexdim}, a web application for spatial exploration of species distribution predictive models.
+    \item Transitioned ArcGIS workshops to open-source GIS solutions and contributed to introductory geomatics courses.
+  \end{itemize}
 }
 \end{cvPrint}
-\vfill
 
 \section*{Education}
 \begin{cvPrint}
@@ -87,6 +76,24 @@ Contributed to geomatics introductory courses and developed tools in R.
 \begin{multicols}{2}
 \setlength{\columnseprule}{0.0pt}
 
+
+
+\subsection*{Programming Languages}
+\noindent\begin{tabular}{ll}
+\score{4}{5} & \texttt{JavaScript} \\
+\score{4}{5} & \texttt{R} \\
+\score{4}{5} & \texttt{HTML5/CSS} \\
+\score{3}{5} & \LaTeX \\
+\score{3}{5} & \texttt{Shell Scripts} \\
+\score{1}{5} & \texttt{C} \\
+\end{tabular}
+
+  \subsection*{Databases}
+\noindent\begin{tabular}{ll}
+\score{4}{5} & \texttt{PostgreSQL} \\
+\score{2}{5} & \texttt{SQLite} \\
+\end{tabular}
+
 \subsection*{GIS Software}
 \noindent\begin{tabular}{ll}
 \score{4}{5} & \texttt{Grass GIS} \\
@@ -95,43 +102,29 @@ Contributed to geomatics introductory courses and developed tools in R.
 \score{1}{5} & \texttt{ArcGIS} \\
 \end{tabular}
 
-\subsection*{Databases}
-\noindent\begin{tabular}{ll}
-\score{4}{5} & \texttt{PostgreSQL} \\
-\score{2}{5} & \texttt{SQLite} \\
-\end{tabular}
-
-\subsection*{Programming Languages}
-\noindent\begin{tabular}{ll}
-\score{4}{5} & \texttt{JavaScript} \\
-\score{4}{5} & \texttt{R} \\
-\score{4}{5} & \texttt{HTML5} \\
-\score{3}{5} & \texttt{CSS} \\
-\score{3}{5} & \LaTeX \\
-\score{2}{5} & \texttt{Shell Scripts} \\
-\score{1}{5} & \texttt{C} \\
-\end{tabular}
-
-\subsection*{Development Tools and Platforms}
+\subsection*{Development tools}
 \noindent\begin{tabular}{ll}
 \score{4}{5} & \texttt{Shiny (R)} \\
 \score{4}{5} & \texttt{Mapbox GL (JS)} \\
 \score{4}{5} & \texttt{Webpack (JS)} \\
 \score{4}{5} & \texttt{Docker} \\
+\score{4}{5} & \texttt{vim} \\
+\score{4}{5} & \texttt{git} \\
 \score{3}{5} & \texttt{Caret (R)} \\
 \score{3}{5} & \texttt{GDAL} \\
+\score{3}{5} & \texttt{Electron} \\
+\score{3}{5} & \texttt{Packer} \\
 \end{tabular}
+
+
+
 
 \subsection*{Operating Systems}
 \noindent\begin{tabular}{ll}
 \score{4}{5} & \texttt{MacOS} \\
-\score{3}{5} & \texttt{Ubuntu Server} \\
-\end{tabular}
+\score{3}{5} & \texttt{Alpine Linux} \\
+\score{2}{5} & \texttt{Ubuntu Server} \\
 
-\subsection*{Other Tools}
-\noindent\begin{tabular}{ll}
-\score{4}{5} & \texttt{vim} \\
-\score{4}{5} & \texttt{git} \\
 \end{tabular}
 
 \end{multicols}
@@ -147,7 +140,6 @@ Contributed to geomatics introductory courses and developed tools in R.
 
 % --------------{ Autres formation }--------------- %
 
-\newpage
 \section*{Previous education}
 
 \begin{cvPrint}
